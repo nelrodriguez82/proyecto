@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+   <ui:composition template="../WEB-INF/templates/newTemplate.xhtml">
+       
+        <ui:define name="content">
+             <div class="card rounded-0">
+                                    <div class="card-header bg-dark">
+                                        <h3 class="card-title text-center text-light">#{bundle.ListComponenteTitle}</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <h:form>
+                                               <script>#{mensajes.mensaje}</script>
+                                                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+    
+                <h:outputText escape="false" value="#{bundle.ListComponenteEmpty}" rendered="#{componenteController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{componenteController.items.rowCount > 0}">
+                    <h:outputText value="#{componenteController.pagination.pageFirstItem + 1}..#{componenteController.pagination.pageLastItem + 1}/#{componenteController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{componenteController.previous}" value="#{bundle.Previous} #{componenteController.pagination.pageSize}" rendered="#{componenteController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{componenteController.next}" value="#{bundle.Next} #{componenteController.pagination.pageSize}" rendered="#{componenteController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{componenteController.items}" var="item" class="table table-striped table-hover table-responsive-md" >
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComponenteTitle_idComponente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idComponente}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComponenteTitle_nombreComponente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreComponente}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComponenteTitle_fase}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fase}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                           
+                            <h:commandButton class="btn-success" action="#{componenteController.prepareEdit}" value="#{bundle.ListComponenteEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandButton class="btn-danger" action="#{componenteController.destroy}" value="#{bundle.ListComponenteDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                
+            </h:form>
+                                        
+                                    </div>
+                                </div>
+        </ui:define>
+    </ui:composition>
+
+</html>

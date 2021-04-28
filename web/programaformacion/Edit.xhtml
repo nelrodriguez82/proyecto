@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="../WEB-INF/templates/newTemplate.xhtml">
+       
+        <ui:define name="content">
+            <div class="card rounded-0">
+                 <script>#{mensajes.mensaje}</script>
+                <div class="card-header bg-dark">
+                    <h3 class="card-title text-center text-light">#{bundle.EditProgramaformacionTitle}</h3>
+                </div>
+                <div class="card-body">
+                    <h:form>
+                        <div class="row">
+
+                            <div class="col-12 col-md-12">
+
+                                <h:outputLabel value="#{bundle.EditProgramaformacionLabel_idProgramaFormacion}" for="idProgramaFormacion" />
+                                <h:inputText id="idProgramaFormacion" value="#{programaformacionController.selected.idProgramaFormacion}" title="#{bundle.EditProgramaformacionTitle_idProgramaFormacion}" required="true" requiredMessage="#{bundle.EditProgramaformacionRequiredMessage_idProgramaFormacion}" class="form-control"/>
+                                <h:message for="idProgramaFormacion" id="idProgramaFormacionM" class="text-danger"/>
+                            </div>
+
+
+                            <div class="col-12 col-md-12">
+                                <h:outputLabel value="#{bundle.EditProgramaformacionLabel_nombrePrograma}" for="nombrePrograma" />
+                                <h:inputText class="form-control" id="nombrePrograma" value="#{programaformacionController.selected.nombrePrograma}" title="#{bundle.EditProgramaformacionTitle_nombrePrograma}" />
+                                <h:message for="nombrePrograma" id="nombreProgramaM" class="text-danger"/>
+                            </div>
+                            <div class="col-12 col-md-12">
+                                <h:outputLabel value="#{bundle.EditProgramaformacionLabel_duracion}" for="duracion" />
+                                <h:inputText class="form-control" id="duracion" value="#{programaformacionController.selected.duracion}" title="#{bundle.EditProgramaformacionTitle_duracion}" />
+                                <h:message for="duracion" id="duracionM" class="text-danger"/>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <h:commandButton action="#{programaformacionController.update}" value="#{bundle.EditProgramaformacionSaveLink}" class="btn btn-primary btn-block" />
+                            </div>
+                        </div>
+                    </h:form>
+
+
+
+
+                </div>
+
+
+
+
+            </div>
+
+
+
+        </ui:define>
+    </ui:composition>
+
+</html>

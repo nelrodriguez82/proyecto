@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="../WEB-INF/templates/newTemplate.xhtml">
+       
+        <ui:define name="content">
+             <div class="card rounded-0">
+                                    <div class="card-header bg-dark">
+                                        <h3 class="card-title text-center text-light">#{bundle.ListMatriculaTitle}</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <h:form>
+                                               <script>#{mensajes.mensaje}</script>
+                                                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMatriculaEmpty}" rendered="#{matriculaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{matriculaController.items.rowCount > 0}">
+                    <h:outputText value="#{matriculaController.pagination.pageFirstItem + 1}..#{matriculaController.pagination.pageLastItem + 1}/#{matriculaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{matriculaController.previous}" value="#{bundle.Previous} #{matriculaController.pagination.pageSize}" rendered="#{matriculaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{matriculaController.next}" value="#{bundle.Next} #{matriculaController.pagination.pageSize}" rendered="#{matriculaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{matriculaController.items}" var="item" class="table table-striped table-hover table-responsive-md">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMatriculaTitle_idMatricula}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMatricula}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMatriculaTitle_idFicha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idFicha}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMatriculaTitle_idAprendiz}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAprendiz.usuario.nombres} #{item.idAprendiz.usuario.apellidos}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMatriculaTitle_fecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                          
+                            <h:commandButton class="btn-success" action="#{matriculaController.prepareEdit}" value="#{bundle.ListMatriculaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandButton class="btn-danger" action="#{matriculaController.destroy}" value="#{bundle.ListMatriculaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                
+            </h:form>
+                                    </div>
+                                    </div>
+        </ui:define>
+    </ui:composition>
+
+</html>

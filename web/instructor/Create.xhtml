@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateInstructorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateInstructorLabel_idInstructor}" for="idInstructor" />
+                    <h:inputText id="idInstructor" value="#{instructorController.selected.idInstructor}" title="#{bundle.CreateInstructorTitle_idInstructor}" required="true" requiredMessage="#{bundle.CreateInstructorRequiredMessage_idInstructor}"/>
+                    <h:outputLabel value="#{bundle.CreateInstructorLabel_tipoVinculacion}" for="tipoVinculacion" />
+                    <h:inputText id="tipoVinculacion" value="#{instructorController.selected.tipoVinculacion}" title="#{bundle.CreateInstructorTitle_tipoVinculacion}" />
+                    <h:outputLabel value="#{bundle.CreateInstructorLabel_profesion}" for="profesion" />
+                    <h:inputText id="profesion" value="#{instructorController.selected.profesion}" title="#{bundle.CreateInstructorTitle_profesion}" />
+                    <h:outputLabel value="#{bundle.CreateInstructorLabel_usuario}" for="usuario" />
+                    <h:selectOneMenu id="usuario" value="#{instructorController.selected.usuario}" title="#{bundle.CreateInstructorTitle_usuario}" required="true" requiredMessage="#{bundle.CreateInstructorRequiredMessage_usuario}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{instructorController.create}" value="#{bundle.CreateInstructorSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{instructorController.prepareList}" value="#{bundle.CreateInstructorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateInstructorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

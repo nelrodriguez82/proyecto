@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:composition template="../WEB-INF/templates/newTemplate.xhtml">
+
+        <ui:define name="content">
+            <div class="card rounded-0">
+                <div class="card-header bg-dark">
+                    <h3 class="card-title text-center text-light">#{bundle.ListGrupotrabajoTitle}</h3>
+                </div>
+                <div class="card-body">
+                    <h:form>
+                        <script>#{mensajes.mensaje}</script>
+
+                        <div class="form-inline">
+                            <h:outputLabel for="fichaEntregable" value="Ficha" class="mx-sm-3"/>
+                            <h:inputText value="#{grupotrabajoController.ficha.idFicha}" id="fichaEntregable" class="form-control rounded-0 mx-sm-6" required="true" requiredMessage="Ingresa una ficha!" a:placeholder="Ficha" validatorMessage="Ingrese una ficha valida">
+                                <!--   <f:validateLength maximum="30"/>
+                                  <f:validateRegex pattern="[A-Za-z-0-9\s]*"/>
+                                 <f:ajax event="keyup" render="fichaCM"/> -->
+                            </h:inputText>
+                            <h:commandButton class="btn btn-primary rounded-0 mx-sm-3" value="Buscar" action="#{grupotrabajoController.consultarEntregablesFicha()}" >
+                                <f:ajax render="selectEntregables @form" execute="fichaEntregable"/>
+                            </h:commandButton>
+
+                            <h:message id="fichaListaM" for="fichaListado" class="text-danger ml-1"/>
+                        </div>
+                    </h:form>
+                  
+                    <h:form id="selectEntregables">
+                        <div class="col-12 col-md-12">
+
+                            <h:outputLabel value="#{bundle.CreateGrupotrabajoLabel_idEntregable}" for="idEntregable" />
+                            <h:selectOneMenu id="idEntregable" value="#{grupotrabajoController.entregable.idEntregable}" class="form-control" title="#{bundle.CreateGrupotrabajoTitle_idEntregable}" required="true" requiredMessage="#{bundle.CreateGrupotrabajoRequiredMessage_idEntregable}">
+                                <f:selectItems value="#{grupotrabajoController.listaEntregablesFicha}" var="entregable" itemValue="#{entregable.idEntregable}" itemLabel="#{entregable.nombre}" />
+                            <f:ajax event="change"
+                                    listener="#{grupotrabajoController.listarGruposFicha()}"
+                                execute="idEntregable" render="listaGrupos" />
+                            </h:selectOneMenu>
+                            <h:message for="idEntregable" id="idEntregableM" class="text-danger"/>
+                        </div>
+                    </h:form>
+                      <br/><br/>
+                    <h:form id="listaGrupos">
+                        <h:panelGroup id="messagePanel" layout="block">
+                            <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                        </h:panelGroup>
+                        <h:outputText escape="false" value="#{bundle.ListGrupotrabajoEmpty}" rendered="#{grupotrabajoController.items.rowCount == 0}"/>
+                        <h:panelGroup >
+                            
+                            <h:dataTable value="#{grupotrabajoController.listaGruposFicha}" var="item" class="table table-striped table-hover table-responsive-md">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListGrupotrabajoTitle_idGrupoTrabajo}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.idGrupoTrabajo}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListGrupotrabajoTitle_nombreGrupo}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.nombreGrupo}"/>
+                                </h:column>
+                              <!--  <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListGrupotrabajoTitle_idEntregable}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.idEntregable.nombre}"/>
+                                </h:column> -->
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="&nbsp;"/>
+                                    </f:facet>
+
+                                    <h:commandButton class="btn-success" action="#{grupotrabajoController.prepareEdit}" value="#{bundle.ListGrupotrabajoEditLink}"/>
+                                    <h:outputText value=" "/>
+                                    <h:commandButton class="btn-danger" action="#{grupotrabajoController.destroy}" value="#{bundle.ListGrupotrabajoDestroyLink}"/>
+                                    <h:commandButton class="btn-primary" action="#{grupotrabajoController.verDetalle(item)}" value="Ver Detalle"/>
+                                </h:column>
+
+                            </h:dataTable>
+                        </h:panelGroup>
+
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+
+</html>

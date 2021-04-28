@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+     <ui:composition template="../WEB-INF/templates/newTemplate.xhtml">
+       
+        <ui:define name="content">
+            <div class="card rounded-0">
+                <div class="card-header bg-dark">
+                    <h3 class="card-title text-center text-light">#{bundle.EditUsuarioTitle}</h3>
+                </div>
+                <div class="card-body">
+                    <h:form>
+                        <div class="row">
+
+                            <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_idUsuario}" for="idUsuario" />
+                    <h:inputText id="idUsuario" value="#{usuarioController.selected.idUsuario}" class="form-control" disabled="true" title="#{bundle.EditUsuarioTitle_idUsuario}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_idUsuario}"/>
+                    <h:message for="idUsuario" id="idUsuarioM" class="text-danger"/>
+                            </div>
+                            <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_tipoDocumento}" for="tipoDocumento" />
+                    <h:inputText id="tipoDocumento" value="#{usuarioController.selected.tipoDocumento}" class="form-control" title="#{bundle.EditUsuarioTitle_tipoDocumento}" />
+                    <h:message for="tipoDocumento" id="tipoDocumentoM" class="text-danger"/>
+                            </div>
+                            <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_documento}" for="documento" />
+                    <h:inputText id="documento" value="#{usuarioController.selected.documento}" class="form-control" title="#{bundle.EditUsuarioTitle_documento}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_documento}"/>
+                     <h:message for="documento" id="documentoM" class="text-danger"/>
+                            </div>
+                            <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_nombres}" for="nombres" />
+                    <h:inputText id="nombres" value="#{usuarioController.selected.nombres}" class="form-control" title="#{bundle.EditUsuarioTitle_nombres}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_nombres}"/>
+                    <h:message for="nombres" id="nombresM" class="text-danger"/>
+                            </div>
+                            <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_apellidos}" for="apellidos" />
+                    <h:inputText id="apellidos" value="#{usuarioController.selected.apellidos}" class="form-control" title="#{bundle.EditUsuarioTitle_apellidos}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_apellidos}"/>
+                     <h:message for="apellidos" id="apellidosM" class="text-danger"/>
+                            </div>
+                            <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_correo}" for="correo" />
+                    <h:inputText id="correo" value="#{usuarioController.selected.correo}" class="form-control" title="#{bundle.EditUsuarioTitle_correo}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_correo}"/>
+                   <h:message for="correo" id="correoM" class="text-danger"/>
+                            </div>
+                            <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{usuarioController.selected.telefono}" class="form-control" title="#{bundle.EditUsuarioTitle_telefono}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_telefono}"/>
+                    <h:message for="telefono" id="telefonoM" class="text-danger"/>
+                            </div>
+                            <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_clave}" for="clave" />
+                    <h:inputText id="clave" value="#{usuarioController.selected.clave}" class="form-control" title="#{bundle.EditUsuarioTitle_clave}" />
+                    <h:message for="clave" id="claveM" class="text-danger"/>
+                            </div>
+                            <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_coordinador}" for="coordinador" />
+                    <h:selectOneMenu id="coordinador" value="#{usuarioController.selected.coordinador}" class="form-control" title="#{bundle.EditUsuarioTitle_coordinador}" >
+                        <f:selectItems value="#{coordinadorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                     <h:message for="coordinador" id="coordinadorM" class="text-danger"/>
+                            </div>
+                            <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_instructor}" for="instructor" />
+                    <h:selectOneMenu id="instructor" value="#{usuarioController.selected.instructor}" class="form-control" title="#{bundle.EditUsuarioTitle_instructor}" >
+                        <f:selectItems value="#{instructorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                     <h:message for="instructor" id="instructorM" class="text-danger"/>
+                            </div>
+                            <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_aprendiz}" for="aprendiz" />
+                    <h:selectOneMenu id="aprendiz" value="#{usuarioController.selected.aprendiz}" class="form-control" title="#{bundle.EditUsuarioTitle_aprendiz}" >
+                        <f:selectItems value="#{aprendizController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                     <h:message for="aprendiz" id="aprendizM" class="text-danger"/>
+                            </div>
+                          
+               
+                <div class="col-12 mt-3">
+                                <h:commandButton action="#{usuarioController.update}" value="#{bundle.EditUsuarioSaveLink}" class="btn btn-primary btn-block" />
+                            </div>
+                        </div>
+                    </h:form>
+
+
+
+
+                </div>
+
+
+
+
+            </div>
+
+
+
+        </ui:define>
+    </ui:composition>
+               
+
+</html>

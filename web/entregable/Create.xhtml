@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="../WEB-INF/templates/newTemplate.xhtml">
+
+        <ui:define name="content">
+            <div class="card rounded-0">
+                <div class="card-header bg-dark"> <h3 class="card-title text-center text-light">#{bundle.CreateEntregableTitle}</h3>
+                </div>
+                <div class="card-body">
+                    <h:form>
+                        <div class="row">
+            
+                <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.CreateEntregableLabel_idComponente}" for="idComponente" />
+                    <h:selectOneMenu id="idComponente" value="#{entregableController.selected.idComponente}" class="form-control" title="#{bundle.CreateEntregableTitle_idComponente}" required="true" requiredMessage="#{bundle.CreateEntregableRequiredMessage_idComponente}">
+                        <f:selectItems value="#{componenteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                     <h:message for="idComponente" id="idComponenteM" class="text-danger"/>
+                            </div>
+                 <!-- <h:outputLabel value="#{bundle.CreateEntregableLabel_idEntregable}" for="idEntregable" />
+                    <h:inputText id="idEntregable" value="#{entregableController.selected.idEntregable}" class="form-control" title="#{bundle.CreateEntregableTitle_idEntregable}" required="true" requiredMessage="#{bundle.CreateEntregableRequiredMessage_idEntregable}"/> -->
+                   <div class="col-12 col-md-12">
+                        <h:outputLabel value="#{bundle.CreateEntregableLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{entregableController.selected.nombre}" class="form-control" title="#{bundle.CreateEntregableTitle_nombre}" required="true" requiredMessage="#{bundle.CreateEntregableRequiredMessage_nombre}"/>
+                    <h:message for="nombre" id="nombreM" class="text-danger"/>
+                            </div>
+                    <div class="col-12 col-md-12">
+                        <h:outputLabel value="#{bundle.CreateEntregableLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{entregableController.selected.descripcion}" class="form-control" title="#{bundle.CreateEntregableTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateEntregableRequiredMessage_descripcion}"/>
+                     <h:message for="descripcion" id="descripcionM" class="text-danger"/>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <h:commandButton  action="#{entregableController.create}" value="#{bundle.CreateEntregableSaveLink}" class="btn btn-primary btn-block" />
+                            </div>
+                        </div>
+            </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+               
+
+</html>

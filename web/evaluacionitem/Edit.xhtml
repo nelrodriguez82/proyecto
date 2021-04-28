@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+   <ui:composition template="../WEB-INF/templates/newTemplate.xhtml">
+
+        <ui:define name="content">
+            <div class="card rounded-0">
+                <div class="card-header bg-dark"> <h3 class="card-title text-center text-light">#{bundle.EditEvaluacionitemTitle}</h3>
+                </div>
+                <div class="card-body">
+                    <h:form>
+                        <div class="row">
+
+                            <div class="col-12 col-md-12">
+       
+                    <h:outputLabel value="#{bundle.EditEvaluacionitemLabel_idEvaluacionItem}" for="idEvaluacionItem" />
+                    <h:inputText id="idEvaluacionItem" value="#{evaluacionitemController.selected.idEvaluacionItem}" disabled="true" class="form-control" title="#{bundle.EditEvaluacionitemTitle_idEvaluacionItem}" required="true" requiredMessage="#{bundle.EditEvaluacionitemRequiredMessage_idEvaluacionItem}"/>
+                     <h:message for="idEvaluacionItem" id="idEvaluacionItemM" class="text-danger"/>
+                            </div> 
+                            <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditEvaluacionitemLabel_resultado}" for="resultado" />
+                    <h:inputText id="resultado" value="#{evaluacionitemController.selected.resultado}" class="form-control" title="#{bundle.EditEvaluacionitemTitle_resultado}" />
+                     <h:message for="resultado" id="resultadoM" class="text-danger"/>
+                            </div> 
+                            <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditEvaluacionitemLabel_observacion}" for="observacion" />
+                    <h:inputText id="observacion" value="#{evaluacionitemController.selected.observacion}" class="form-control" title="#{bundle.EditEvaluacionitemTitle_observacion}" />
+                     <h:message for="observacion" id="observacionM" class="text-danger"/>
+                            </div> 
+                            <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditEvaluacionitemLabel_idEvaluacion}" for="idEvaluacion" />
+                    <h:selectOneMenu id="idEvaluacion" value="#{evaluacionitemController.selected.idEvaluacion}" class="form-control" title="#{bundle.EditEvaluacionitemTitle_idEvaluacion}" >
+                        <f:selectItems value="#{evaluacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:message for="idEvaluacion" id="idEvaluacionM" class="text-danger"/>
+                            </div> 
+                            <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditEvaluacionitemLabel_idItem}" for="idItem" />
+                    <h:selectOneMenu id="idItem" value="#{evaluacionitemController.selected.idItem}" class="form-control" title="#{bundle.EditEvaluacionitemTitle_idItem}" >
+                        <f:selectItems value="#{itemevaluacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                     <h:message for="idItem" id="idItemM" class="text-danger"/>
+                            </div> 
+                            
+                 <div class="col-12 mt-3">
+                                <h:commandButton action="#{evaluacionitemController.update}" value="#{bundle.EditEvaluacionitemSaveLink}" class="btn btn-primary btn-block" />
+                            </div>
+                        </div>
+                    </h:form>
+
+
+
+
+                </div>
+
+
+
+
+            </div>
+
+        </ui:define>
+    </ui:composition>
+               
+
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEvaluacionitemTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEvaluacionitemLabel_idEvaluacionItem}" for="idEvaluacionItem" />
+                    <h:inputText id="idEvaluacionItem" value="#{evaluacionitemController.selected.idEvaluacionItem}" title="#{bundle.CreateEvaluacionitemTitle_idEvaluacionItem}" required="true" requiredMessage="#{bundle.CreateEvaluacionitemRequiredMessage_idEvaluacionItem}"/>
+                    <h:outputLabel value="#{bundle.CreateEvaluacionitemLabel_resultado}" for="resultado" />
+                    <h:inputText id="resultado" value="#{evaluacionitemController.selected.resultado}" title="#{bundle.CreateEvaluacionitemTitle_resultado}" />
+                    <h:outputLabel value="#{bundle.CreateEvaluacionitemLabel_observacion}" for="observacion" />
+                    <h:inputText id="observacion" value="#{evaluacionitemController.selected.observacion}" title="#{bundle.CreateEvaluacionitemTitle_observacion}" />
+                    <h:outputLabel value="#{bundle.CreateEvaluacionitemLabel_idEvaluacion}" for="idEvaluacion" />
+                    <h:selectOneMenu id="idEvaluacion" value="#{evaluacionitemController.selected.idEvaluacion}" title="#{bundle.CreateEvaluacionitemTitle_idEvaluacion}" >
+                        <f:selectItems value="#{evaluacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateEvaluacionitemLabel_idItem}" for="idItem" />
+                    <h:selectOneMenu id="idItem" value="#{evaluacionitemController.selected.idItem}" title="#{bundle.CreateEvaluacionitemTitle_idItem}" >
+                        <f:selectItems value="#{itemevaluacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{evaluacionitemController.create}" value="#{bundle.CreateEvaluacionitemSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{evaluacionitemController.prepareList}" value="#{bundle.CreateEvaluacionitemShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateEvaluacionitemIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

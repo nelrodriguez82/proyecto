@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+     <ui:composition template="../WEB-INF/templates/newTemplate.xhtml">
+
+        <ui:define name="content">
+            <div class="card rounded-0">
+                <div class="card-header bg-dark"> <h3 class="card-title text-center text-light">#{bundle.EditItemevaluacionTitle}</h3>
+                </div>
+                <div class="card-body">
+                    <h:form>
+                        <div class="row">
+
+                            <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditItemevaluacionLabel_idItemEvaluacion}" for="idItemEvaluacion" />
+                    <h:inputText id="idItemEvaluacion" value="#{itemevaluacionController.selected.idItemEvaluacion}" disabled="true" class="form-control" title="#{bundle.EditItemevaluacionTitle_idItemEvaluacion}" required="true" requiredMessage="#{bundle.EditItemevaluacionRequiredMessage_idItemEvaluacion}"/>
+                    <h:message for="idItemEvaluacion" id="idItemEvaluacionM" class="text-danger"/>
+                            </div> 
+                             <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditItemevaluacionLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{itemevaluacionController.selected.descripcion}" class="form-control" title="#{bundle.EditItemevaluacionTitle_descripcion}" required="true" requiredMessage="#{bundle.EditItemevaluacionRequiredMessage_descripcion}"/>
+                 <h:message for="descripcion" id="descripcionM" class="text-danger"/>
+                            </div> 
+                             <div class="col-12 mt-3">
+                                <h:commandButton action="#{itemevaluacionController.update}" value="#{bundle.EditItemevaluacionSaveLink}" class="btn btn-primary btn-block" />
+                            </div>
+                        </div>
+                    </h:form>
+
+
+
+
+                </div>
+
+
+
+
+            </div>
+
+        </ui:define>
+    </ui:composition> 
+              
+             
+
+</html>

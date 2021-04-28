@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="../WEB-INF/templates/newTemplate.xhtml">
+       
+        <ui:define name="content">
+             <div class="card rounded-0">
+                                    <div class="card-header bg-dark">
+                                        <h3 class="card-title text-center text-light">#{bundle.ListFichaTitle}</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <h:form>
+                                               <script>#{mensajes.mensaje}</script>
+                                                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListFichaEmpty}" rendered="#{fichaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{fichaController.items.rowCount > 0}">
+                    <h:outputText value="#{fichaController.pagination.pageFirstItem + 1}..#{fichaController.pagination.pageLastItem + 1}/#{fichaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{fichaController.previous}" value="#{bundle.Previous} #{fichaController.pagination.pageSize}" rendered="#{fichaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{fichaController.next}" value="#{bundle.Next} #{fichaController.pagination.pageSize}" rendered="#{fichaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{fichaController.items}" var="item" class="table table-striped table-hover table-responsive-md">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFichaTitle_idFicha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idFicha}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFichaTitle_idPrograma}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPrograma.nombrePrograma}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFichaTitle_fechaInicio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaInicio}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFichaTitle_fechaFin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaFin}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFichaTitle_cupo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cupo}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                           
+                            <h:commandButton class="btn-success" action="#{fichaController.prepareEdit}" value="#{bundle.ListFichaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandButton class="btn-danger" action="#{fichaController.destroy}" value="#{bundle.ListFichaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+               
+            </h:form>
+                                    </div>
+                                    </div>
+        </ui:define>
+    </ui:composition>
+
+</html>

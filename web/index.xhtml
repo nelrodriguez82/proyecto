@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>AWESA</title>
+         <meta charset="UTF-8"/>
+        
+         <link rel="shortcut icon" href="img/Logo.JPG"></link>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+         <h:outputStylesheet name="css/bootstrap.min.css"/>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <h:outputScript name="js/Mensajes.js"/>
+    </h:head>
+    <h:body>
+         <nav class="navbar navbar-dark bg-success navbar-expand-md">
+                
+             <img src="img/Logo.JPG" alt="" width="50px"/>
+              
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+               <!-- <div class="collapse navbar-collapse" id="menu">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><h:link outcome="index" class="nav-link" value="Inicio"/></li>
+                    </ul>
+                    <h:link outcome="registro" class="navbar-nav text-light">Registrar</h:link>
+                </div> -->
+            </nav>
+      
+                <script>#{mensajes.mensaje}</script>
+                <div class="container mt-5 mb-5">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-5">
+                            <div class="card">
+                                <div class="card-header bg-dark">
+                                    <h3 class="card-title text-center text-light">Login</h3>
+                                </div>
+                                <div class="card-body">
+                                    <!--Formulario para ingreso al sistema-->
+                                    <h:form>
+                                        <dv class="row">
+                                             <div class="col-12">
+                                                <h:outputLabel for="numeroDoc" value="Número de documento"/>
+                                                <h:inputText value="#{loginController.usuario.documento}" id="numeroDoc" class="form-control" required="true" a:placeholder="Documento" requiredMessage="Ingrese su documento!" validatorMessage="Por favor ingrese un valor correcto!">
+                                                   <!--  <f:validateLength maximum="40"/>
+                                                    <f:validateRegex pattern="[0-9]*"/>
+                                                 <f:ajax render="numeroDocM" event="keyup"/>  -->
+                                                </h:inputText>
+                                                <h:message id="numeroDocM" for="numeroDoc" class="text-danger"/>
+                                            </div>
+                                            <div class="col-12">
+                                                <h:outputLabel value="Contraseña" for="contrasena"/>
+                                                <h:inputSecret value="#{loginController.usuario.clave}" id="contrasena" class="form-control" a:placeholder="Contraseña" required="true" requiredMessage="Ingrese una contraseña!" validatorMessage="Ingrese una contraseña valida!">
+                                                    <!-- <f:validateLength maximum="30"/>
+                                                   <f:ajax event="keyup" render="contrasenaM"/> -->
+                                                </h:inputSecret>
+                                                <h:message for="contrasena" id="contrasenaM" class="text-danger"/>
+                                                <h:commandButton action="#{loginController.ingresar()}" class="btn btn-primary btn-block text-light mt-3" value="Ingresar"/>
+                                            </div>
+                                        </dv>
+                                    </h:form>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+           <div class="container-fluid">
+                <div class="row bg-success">
+                    <div class="col-12">
+                       
+                    </div>
+                </div>
+            </div>
+        <h:outputScript name="resources/js/jquery-3.3.1.min.js"/>
+        <h:outputScript name="js/popper.min.js"/>
+        <h:outputScript name="js/bootstrap.min.js"/>
+        
+    </h:body>
+</html>
+

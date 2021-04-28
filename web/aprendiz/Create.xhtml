@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="../WEB-INF/templates/newTemplate.xhtml">
+
+        <ui:define name="content">
+            <div class="card rounded-0">
+                <div class="card-header bg-dark"> <h3 class="card-title text-center text-light">#{bundle.CreateAprendizTitle}</h3>
+                </div>
+                <div class="card-body">
+                    <h:form>
+                        <div class="row">
+            
+                <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.CreateAprendizLabel_idAprendiz}" for="idAprendiz" />
+                    <h:inputText id="idAprendiz" class="form-control" value="#{aprendizController.selected.idAprendiz}" title="#{bundle.CreateAprendizTitle_idAprendiz}" required="true" requiredMessage="#{bundle.CreateAprendizRequiredMessage_idAprendiz}"/>
+                      <h:message for="idAprendiz" id="idAprendizM" class="text-danger"/>
+                            </div>
+                     <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.CreateAprendizLabel_estrato}" for="estrato" />
+                    <h:inputText id="estrato" class="form-control" value="#{aprendizController.selected.estrato}" title="#{bundle.CreateAprendizTitle_estrato}" required="true" requiredMessage="#{bundle.CreateAprendizRequiredMessage_estrato}"/>
+                    <h:message for="estrato" id="estratoM" class="text-danger"/>
+                            </div>
+                     <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.CreateAprendizLabel_discapacidad}" for="discapacidad" />
+                    <h:inputText id="discapacidad" class="form-control" value="#{aprendizController.selected.discapacidad}" title="#{bundle.CreateAprendizTitle_discapacidad}" required="true" requiredMessage="#{bundle.CreateAprendizRequiredMessage_discapacidad}"/>
+                     <h:message for="discapacidad" id="discapacidadM" class="text-danger"/>
+                            </div>
+                     <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.CreateAprendizLabel_usuario}" for="usuario" />
+                    <h:selectOneMenu id="usuario" class="form-control" value="#{aprendizController.selected.usuario}" title="#{bundle.CreateAprendizTitle_usuario}" required="true" requiredMessage="#{bundle.CreateAprendizRequiredMessage_usuario}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                     <h:message for="usuario" id="usuarioM" class="text-danger"/>
+                            </div>
+                <div class="col-12 mt-3">
+                                <h:commandButton action="#{aprendizController.create}" value="#{bundle.CreateAprendizSaveLink}" class="btn btn-primary btn-block" />
+                            </div>
+                        </div>
+            </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,490 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <title>AWESA</title>     
+       
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" href="../../img/Logo.JPG"></link>
+        <!-- <h:outputStylesheet name="css/bootstrap.min.css"/> -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <h:outputScript name="js/Mensajes.js"/>
+        <!-- Font Awesome -->
+        <h:outputStylesheet name="plugins/fontawesome-free/css/all.min.css"/>
+
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+        <!-- Tempusdominus Bbootstrap 4 -->
+        <h:outputStylesheet name="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css"/>
+        <!-- iCheck -->
+        <h:outputStylesheet name="plugins/icheck-bootstrap/icheck-bootstrap.min.css"/> 
+        <!-- JQVMap -->
+        <h:outputStylesheet name="plugins/jqvmap/jqvmap.min.css"/> 
+        <!-- Theme style  -->
+        <h:outputStylesheet name="dist/css/adminlte.min.css"/> 
+        <!-- overlayScrollbars -->
+        <h:outputStylesheet name="plugins/overlayScrollbars/css/OverlayScrollbars.min.css"/>
+        <!-- Daterange picker -->
+        <h:outputStylesheet name="plugins/daterangepicker/daterangepicker.css"/> 
+        <!-- summernote -->
+        <h:outputStylesheet name="plugins/summernote/summernote-bs4.css"/> 
+        <!-- Google Font: Source Sans Pro -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"/>
+
+    </h:head>
+
+
+
+
+
+    <h:body class="hold-transition sidebar-mini layout-fixed">
+        <div class="wrapper">
+            <nav class="main-header navbar navbar-dark bg-success navbar-expand-md" >
+                <!--<nav class="navbar navbar-dark bg-success navbar-expand-md"> -->
+
+
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <h4><h:outputLabel class="navbar-nav text-light" value="#{loginController.usuarioLogeado.nombres} #{loginController.usuarioLogeado.apellidos}"/></h4>
+                <div class="collapse navbar-collapse" id="menu">
+                    <ul class="navbar-nav mr-auto">
+                        <!-- <li class="nav-item"><h:link outcome="menu" class="nav-link" value="Ver factura"/></li> -->
+                    </ul>
+                    <h:form>
+                        <h:commandLink action="#{loginController.salir()}"  class="btn btn-success navbar-nav text-light">Salir</h:commandLink>
+                    </h:form>
+                </div>
+            </nav>
+            <!-- Navbar -->
+            <!-- <nav class="main-header navbar navbar-expand navbar-white navbar-light" >
+              
+               <ul class="navbar-nav">
+                 <li class="nav-item d-none d-sm-inline-block">
+                   <a href="../index.html" class="nav-link">Cerrar Sesión</a>
+                 </li>
+               </ul>
+           
+                SEARCH FORM 
+               <form class="form-inline ml-3">
+                 <div class="input-group input-group-sm">
+                   <input class="form-control form-control-navbar" type="search" placeholder="Buscar" aria-label="Search"/>
+                   <div class="input-group-append">
+                     <button class="btn btn-navbar" type="submit">
+                       <i class="fas fa-search"></i>
+                     </button>
+                   </div>
+                 </div>
+               </form>
+           
+                Right navbar links
+               
+             </nav> -->
+            <!-- /.navbar -->
+
+            <!-- Main Sidebar Container -->
+            <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background:linear-gradient(to left, #1b5583, #1b5583);">
+                <!-- Brand Logo -->
+                <a href="index.xhtml" class="brand-link bg-success" >
+                    <img src="../../img/Logo.JPG" alt="Admin Logo" class="brand-image img-circle elevation-4"/>
+                    <span class="brand-text  font-weight-light">Coordinador</span>
+                </a>
+
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <!-- Sidebar user panel (optional) -->
+
+
+                    <!-- Sidebar Menu -->
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <!-- Add icons to the links using the .nav-icon class
+                                 with font-awesome or any other icon font library -->
+
+
+
+                            <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-edit"></i>
+                                    <p>
+                                        Diseño Curricular
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Programa de Formación</p>
+                                        </a>
+                                        <ul class="nav nav-treeview">
+                                            <li class="nav-item">
+                                                <a href="../programaformacion/Create.xhtml" class="nav-link">
+                                                    <i class="far nav-icon"></i>
+                                                    <p>Registrar</p>
+
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="../programaformacion/List.xhtml" class="nav-link">
+                                                    <i class="far nav-icon"></i>
+                                                    <p>Consultar</p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Resultado de Aprendizaje</p>
+                                            </a>
+                                            <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                    <a href="../resultadoaprendizaje/Create.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Registrar</p>
+
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="../resultadoaprendizaje/List.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Consultar</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Ficha</p>
+                                            </a>
+                                            <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                    <a href="../ficha/Create.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Registrar</p>
+
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="../ficha/List.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Consultar</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Módulo</p>
+                                            </a>
+                                            <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                    <a href="../componente/Create.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Registrar</p>
+
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="../componente/List.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Consultar</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="../resultadocomponente/Create.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Asociar Resultado</p>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Temas</p>
+                                            </a>
+                                            <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                    <a href="../tema/Create.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Registrar</p>
+
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="../tema/List.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Consultar</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                            </li>
+
+                            <!-- ]************* -->
+                            <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-book"></i>
+                                    <p>
+                                        Programación
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Matricula</p>
+                                            </a>
+                                            <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                    <a href="../matricula/Create.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Registrar</p>
+
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="../matricula/List.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Consultar</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="../ficha/ListadoAprendicesFicha.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Listado Aprendices</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Módulos</p>
+                                            </a>
+                                            <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                    <a href="../fichacomponente/Create.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Programar Instructores</p>
+
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="../fichacomponente/VerProgramacionFicha.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Consultar Programación</p>
+                                                    </a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Evaluación</p>
+                                            </a>
+                                            <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                    <a href="../programacionevaluacion/Create.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Programar Jurados</p>
+
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="../programacionevaluacion/VerEvaluacionFicha.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Consultar Evaluaciones</p>
+                                                    </a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </li>
+                                    </ul>
+                            </li>
+                            <!-- ********** -->
+                            <li class="nav-item has-treeview ">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Evaluación
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Entregable</p>
+                                            </a>
+                                            <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                    <a href="../entregable/Create.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Registrar</p>
+
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="../entregable/List.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Consultar</p>
+                                                    </a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Item Evaluación</p>
+                                            </a>
+                                            <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                    <a href="../itemevaluacion/Create.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Registrar</p>
+
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="../itemevaluacion/List.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Consultar</p>
+                                                    </a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Lista de Chequeo</p>
+                                            </a>
+                                            <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                    <a href="../listachequeo/Create.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Registrar</p>
+
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="../listachequeo/List.xhtml" class="nav-link">
+                                                        <i class="far nav-icon"></i>
+                                                        <p>Consultar</p>
+                                                    </a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </li>
+                                    </ul>
+                            </li>
+
+                            
+                        </ul>
+                    </nav>
+                    <!-- /.sidebar-menu -->
+                </div>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+
+                <!-- /.content-header -->
+
+                <!-- Main content -->
+
+                <section class="content" >
+
+                    <ui:insert name="content">
+                        
+
+                    </ui:insert>
+
+                </section>
+                <!-- /.content -->
+            </div>
+            <!-- /.content-wrapper -->
+
+
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+            </aside>
+            <!-- /.control-sidebar -->
+        </div>
+        <!-- ./wrapper -->
+        <h:outputScript name="js/jquery-3.3.1.min.js"/>
+        <h:outputScript name="js/popper.min.js"/>
+        <h:outputScript name="js/bootstrap.min.js"/>
+        <!-- jQuery -->
+        <h:outputScript name="plugins/jquery/jquery.min.js"/> 
+        <!-- jQuery UI 1.11.4-->
+        <h:outputScript name="plugins/jquery-ui/jquery-ui.min.js"/>  
+        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+        <script>
+            $.widget.bridge('uibutton', $.ui.button)
+        </script>
+        <!-- Bootstrap 4 -->
+        <h:outputScript name="plugins/bootstrap/js/bootstrap.bundle.min.js"/>
+        <!-- ChartJS -->
+        <h:outputScript name="plugins/chart.js/Chart.min.js"/>
+        <!-- Sparkline -->
+        <h:outputScript name="plugins/sparklines/sparkline.js"/>
+        <!-- JQVMap -->
+        <h:outputScript name="plugins/jqvmap/jquery.vmap.min.js"/>
+        <h:outputScript name="plugins/jqvmap/maps/jquery.vmap.usa.js"/>
+        <h:outputScript name="plugins/jquery-knob/jquery.knob.min.js"/>
+        <!-- daterangepicker -->
+        <h:outputScript name="plugins/moment/moment.min.js"/>
+        <h:outputScript name="plugins/daterangepicker/daterangepicker.js"/>
+        <!-- Tempusdominus Bootstrap 4 -->
+        <h:outputScript name="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"/> 
+        <!-- Summernote -->
+        <h:outputScript name="plugins/summernote/summernote-bs4.min.js"/>
+        <!-- overlayScrollbars -->
+        <h:outputScript name="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"/>
+        <!-- AdminLTE App -->
+        <h:outputScript name="dist/js/adminlte.js"/>
+        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+        <h:outputScript name="dist/js/pages/dashboard.js"/>
+        <!-- AdminLTE for demo purposes -->
+        <h:outputScript name="dist/js/demo.js"/>
+
+
+    </h:body>
+
+</html>

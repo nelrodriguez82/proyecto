@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+     <ui:composition template="../WEB-INF/templates/newTemplate.xhtml">
+       
+        <ui:define name="content">
+            <div class="card rounded-0">
+                <div class="card-header bg-dark">
+                    <h3 class="card-title text-center text-light">#{bundle.EditTemaTitle}</h3>
+                </div>
+                <div class="card-body">
+                    <h:form>
+                        <div class="row">
+
+                            <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditTemaLabel_idTema}" for="idTema" />
+                    <h:inputText id="idTema" value="#{temaController.selected.idTema}"  class="form-control" disabled="true" title="#{bundle.EditTemaTitle_idTema}" required="true" requiredMessage="#{bundle.EditTemaRequiredMessage_idTema}"/>
+                   <h:message for="idTema" id="idTemaM" class="text-danger"/>
+                            </div>
+                            <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditTemaLabel_idComponente}" for="idComponente" />
+                    <h:selectOneMenu id="idComponente" value="#{temaController.selected.idComponente}" class="form-control" title="#{bundle.EditTemaTitle_idComponente}" required="true" requiredMessage="#{bundle.EditTemaRequiredMessage_idComponente}">
+                        <f:selectItems value="#{componenteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:message for="idComponente" id="idComponenteM" class="text-danger"/>
+                            </div>
+ <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditTemaLabel_nombreTema}" for="nombreTema" />
+                    <h:inputText id="nombreTema" value="#{temaController.selected.nombreTema}" class="form-control" title="#{bundle.EditTemaTitle_nombreTema}" required="true" requiredMessage="#{bundle.EditTemaRequiredMessage_nombreTema}"/>
+                    <h:message for="nombreTema" id="nombreTemaM" class="text-danger"/>
+                            </div>
+ 
+ 
+                <div class="col-12 mt-3">
+                                <h:commandButton action="#{temaController.update}" value="#{bundle.EditTemaSaveLink}" class="btn btn-primary btn-block" />
+                            </div>
+                        </div>
+                    </h:form>
+
+
+
+
+                </div>
+
+
+
+
+            </div>
+
+
+
+        </ui:define>
+    </ui:composition>
+              
+
+</html>

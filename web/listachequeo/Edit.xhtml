@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="../WEB-INF/templates/newTemplate.xhtml">
+
+        <ui:define name="content">
+            <div class="card rounded-0">
+                <div class="card-header bg-dark"> <h3 class="card-title text-center text-light">#{bundle.EditListachequeoTitle}</h3>
+                </div>
+                <div class="card-body">
+                    <h:form>
+                        <div class="row">
+
+                            <div class="col-12 col-md-12">
+       
+                    <h:outputLabel value="#{bundle.EditListachequeoLabel_idListaChequeo}" for="idListaChequeo" />
+                    <h:inputText id="idListaChequeo" value="#{listachequeoController.selected.idListaChequeo}" class="form-control" disabled="true" title="#{bundle.EditListachequeoTitle_idListaChequeo}" required="true" requiredMessage="#{bundle.EditListachequeoRequiredMessage_idListaChequeo}"/>
+                    <h:message for="idListaChequeo" id="idListaChequeoM" class="text-danger"/>
+                            </div> 
+                             <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditListachequeoLabel_idEntregable}" for="idEntregable" />
+                    <h:selectOneMenu id="idEntregable" value="#{listachequeoController.selected.idEntregable}" class="form-control" title="#{bundle.EditListachequeoTitle_idEntregable}" required="true" requiredMessage="#{bundle.EditListachequeoRequiredMessage_idEntregable}">
+                        <f:selectItems value="#{entregableController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                     <h:message for="idEntregable" id="idEntregableM" class="text-danger"/>
+                            </div> 
+                             <div class="col-12 col-md-12">
+                    <h:outputLabel value="#{bundle.EditListachequeoLabel_idItem}" for="idItem" />
+                    <h:selectOneMenu id="idItem" value="#{listachequeoController.selected.idItem}" class="form-control" title="#{bundle.EditListachequeoTitle_idItem}" required="true" requiredMessage="#{bundle.EditListachequeoRequiredMessage_idItem}">
+                        <f:selectItems value="#{itemevaluacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                     <h:message for="idItem" id="idItemM" class="text-danger"/>
+                            </div> 
+                             <div class="col-12 mt-3">
+                                <h:commandButton action="#{listachequeoController.update}" value="#{bundle.EditListachequeoSaveLink}" class="btn btn-primary btn-block" />
+                            </div>
+                        </div>
+                    </h:form>
+
+
+
+
+                </div>
+
+
+
+
+            </div>
+
+        </ui:define>
+    </ui:composition> 
+                
+
+</html>

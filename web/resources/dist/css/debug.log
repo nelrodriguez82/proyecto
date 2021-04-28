@@ -1,0 +1,3 @@
+[0617/215047.059:ERROR:file_io_win.cc(179)] CreateFile C:\Users\Johan.farfan\AppData\Local\Google\Chrome\User Data\Crashpad\settings.dat: Acceso denegado. (0x5)
+[0617/215047.065:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: Ha terminado la canalización. (0x6D)
+[0617/215047.068:ERROR:file_io_win.cc(179)] CreateFile C:\Users\Johan.farfan\AppData\Local\Google\Chrome\User Data\Crashpad\settings.dat: Acceso denegado. (0x5)
