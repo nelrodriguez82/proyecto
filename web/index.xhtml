@@ -23,12 +23,7 @@
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#menu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-               <!-- <div class="collapse navbar-collapse" id="menu">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><h:link outcome="index" class="nav-link" value="Inicio"/></li>
-                    </ul>
-                    <h:link outcome="registro" class="navbar-nav text-light">Registrar</h:link>
-                </div> -->
+               
             </nav>
       
                 <script>#{mensajes.mensaje}</script>
@@ -40,23 +35,20 @@
                                     <h3 class="card-title text-center text-light">Login</h3>
                                 </div>
                                 <div class="card-body">
-                                    <!--Formulario para ingreso al sistema-->
+                                   
                                     <h:form>
                                         <dv class="row">
                                              <div class="col-12">
                                                 <h:outputLabel for="numeroDoc" value="Número de documento"/>
                                                 <h:inputText value="#{loginController.usuario.documento}" id="numeroDoc" class="form-control" required="true" a:placeholder="Documento" requiredMessage="Ingrese su documento!" validatorMessage="Por favor ingrese un valor correcto!">
-                                                   <!--  <f:validateLength maximum="40"/>
-                                                    <f:validateRegex pattern="[0-9]*"/>
-                                                 <f:ajax render="numeroDocM" event="keyup"/>  -->
+                                                  
                                                 </h:inputText>
                                                 <h:message id="numeroDocM" for="numeroDoc" class="text-danger"/>
                                             </div>
                                             <div class="col-12">
                                                 <h:outputLabel value="Contraseña" for="contrasena"/>
                                                 <h:inputSecret value="#{loginController.usuario.clave}" id="contrasena" class="form-control" a:placeholder="Contraseña" required="true" requiredMessage="Ingrese una contraseña!" validatorMessage="Ingrese una contraseña valida!">
-                                                    <!-- <f:validateLength maximum="30"/>
-                                                   <f:ajax event="keyup" render="contrasenaM"/> -->
+                                                   
                                                 </h:inputSecret>
                                                 <h:message for="contrasena" id="contrasenaM" class="text-danger"/>
                                                 <h:commandButton action="#{loginController.ingresar()}" class="btn btn-primary btn-block text-light mt-3" value="Ingresar"/>

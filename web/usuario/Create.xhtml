@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="../WEB-INF/templates/newTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
    
-   <ui:composition template="../WEB-INF/templates/newTemplate.xhtml">
+ 
 
         <ui:define name="content">
             <div class="card rounded-0">
@@ -16,12 +16,8 @@
                 <div class="card-body">
                     <h:form>
                         <div class="row">
-<!--
-                         <div class="col-12 col-md-12">
-                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_idUsuario}" for="idUsuario" />
-                    <h:inputText id="idUsuario" value="#{usuarioController.selected.idUsuario}" class="form-control" title="#{bundle.CreateUsuarioTitle_idUsuario}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_idUsuario}"/>
-                     <h:message for="idUsuario" id="idUsuarioM" class="text-danger"/>
-                            </div> -->
+
+                         
                             <div class="col-12 col-md-12">
                     <h:outputLabel value="#{bundle.CreateUsuarioLabel_tipoDocumento}" for="tipoDocumento" />
                     <h:inputText id="tipoDocumento" value="#{usuarioController.selected.tipoDocumento}" class="form-control" title="#{bundle.CreateUsuarioTitle_tipoDocumento}" />
@@ -94,4 +90,4 @@
         </ui:define>
     </ui:composition>
 
-</html>
+

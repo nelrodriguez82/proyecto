@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="../WEB-INF/templates/newTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
-    <ui:composition template="../WEB-INF/templates/newTemplate.xhtml">
+
 
         <ui:define name="content">
             <div class="card rounded-0">
@@ -20,9 +20,7 @@
                         <div class="form-inline">
                             <h:outputLabel for="fichaEntregable" value="Ficha" class="mx-sm-3"/>
                             <h:inputText value="#{grupotrabajoController.ficha.idFicha}" id="fichaEntregable" class="form-control rounded-0 mx-sm-6" required="true" requiredMessage="Ingresa una ficha!" a:placeholder="Ficha" validatorMessage="Ingrese una ficha valida">
-                                <!--   <f:validateLength maximum="30"/>
-                                  <f:validateRegex pattern="[A-Za-z-0-9\s]*"/>
-                                 <f:ajax event="keyup" render="fichaCM"/> -->
+                              
                             </h:inputText>
                             <h:commandButton class="btn btn-primary rounded-0 mx-sm-3" value="Buscar" action="#{grupotrabajoController.consultarEntregablesFicha()}" >
                                 <f:ajax render="selectEntregables @form" execute="fichaEntregable"/>
@@ -66,12 +64,7 @@
                                     </f:facet>
                                     <h:outputText value="#{item.nombreGrupo}"/>
                                 </h:column>
-                              <!--  <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="#{bundle.ListGrupotrabajoTitle_idEntregable}"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.idEntregable.nombre}"/>
-                                </h:column> -->
+                             
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="&nbsp;"/>
@@ -92,4 +85,4 @@
         </ui:define>
     </ui:composition>
 
-</html>
+

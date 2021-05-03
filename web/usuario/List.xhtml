@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="../WEB-INF/templates/newTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-     <ui:composition template="../WEB-INF/templates/newTemplate.xhtml">
        
         <ui:define name="content">
             
@@ -66,26 +65,7 @@
                             </f:facet>
                             <h:outputText value="#{item.telefono}"/>
                         </h:column>
-                      <!--
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUsuarioTitle_coordinador}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.coordinador}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUsuarioTitle_instructor}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.instructor}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUsuarioTitle_aprendiz}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.aprendiz}"/>
-                        </h:column>
-                      -->
+                     
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
@@ -105,4 +85,3 @@
         </ui:define>
     </ui:composition>
 
-</html>
