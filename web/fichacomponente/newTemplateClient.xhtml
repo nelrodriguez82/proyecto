@@ -17,9 +17,7 @@
                                             <div class="form-inline">
                                                 <h:outputLabel for="fichaC" value="Ficha" class="mx-sm-3"/>
                                                 <h:inputText value="#{fichacomponenteController.ficha.idFicha}" id="fichaC" class="form-control rounded-0 mx-sm-6" required="true" requiredMessage="Ingresa una ficha!" a:placeholder="Ficha" validatorMessage="Ingrese una ficha valida">
-                                                  <!--   <f:validateLength maximum="30"/>
-                                                    <f:validateRegex pattern="[A-Za-z-0-9\s]*"/>
-                                                   <f:ajax event="keyup" render="fichaCM"/> -->
+                                                 
                                                 </h:inputText>
                                                 <h:commandButton class="btn btn-primary rounded-0 mx-sm-3" value="Buscar" action="#{fichacomponenteController.consultarModulosFicha()}" >
                                                     <f:ajax render=":programacionH @form" execute="fichaC"/>
